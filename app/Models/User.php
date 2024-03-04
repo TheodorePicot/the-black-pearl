@@ -4,6 +4,8 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
@@ -13,14 +15,39 @@ class User extends Authenticatable
     use HasApiTokens, HasFactory, Notifiable;
 
     /**
+     * If the user is a captain, gets the ship he owns.
+     *
+     * @return HasOne the ship owned by the user, if he is a captain.
+     */
+    public function ship(): HasOne
+    {
+        return $this->hasOne(Ship::class);
+    }
+
+    /**
+     * If the user is not a captain, gets the ships he works for.
+     *
+     * @return BelongsToMany the ships he works for.
+     */
+    public function worksFor(): BelongsToMany
+    {
+        return $this->belongsToMany(Ship::class);
+    }
+
+    /**
      * The attributes that are mass assignable.
      *
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
         'email',
         'password',
+        'name',
+        'first_name',
+        'last_name',
+        'age',
+        'description',
+        'specialities'
     ];
 
     /**
