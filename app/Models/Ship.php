@@ -14,6 +14,8 @@ class Ship extends Model
 
     /**
      * Get the captain of the ship.
+     *
+     * @return BelongsTo the captain the ship belongs to.
      */
     public function captain(): BelongsTo
     {
@@ -28,6 +30,26 @@ class Ship extends Model
     public function crew(): HasMany
     {
         return $this->hasMany(User::class);
+    }
+
+    /**
+     * Get the resources stored on the ship.
+     *
+     * @return HasMany the resources stored on the ship.
+     */
+    public function resources(): HasMany
+    {
+        return $this->hasMany(Resource::class);
+    }
+
+    /**
+     * Get the treasures stored on the ship.
+     *
+     * @return HasMany the treasures stored on the ship.
+     */
+    public function treasures(): HasMany
+    {
+        return $this->hasMany(Treasure::class);
     }
 
     /**

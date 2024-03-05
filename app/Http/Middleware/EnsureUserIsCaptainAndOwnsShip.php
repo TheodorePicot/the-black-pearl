@@ -6,10 +6,11 @@ use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class EnsureUserIsCaptain
+class EnsureUserIsCaptainAndOwnsShip
 {
     /**
      * Handle an incoming request.
+     * TODO add check if owns ship
      *
      * @param \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response) $next
      */
