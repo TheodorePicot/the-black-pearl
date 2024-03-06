@@ -1,5 +1,6 @@
 <?php
 
+use App\Enums\Specialities;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -12,12 +13,12 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->string('first_name');
-            $table->string('last_name');
-            $table->integer('age');
-            $table->string('description');
-            $table->enum('specialities', ['cook', 'gunner', 'pickpocket', 'surgeon', 'quartermaster'])->nullable();
-            $table->boolean('is_captain');
+            $table->string('first_name')->nullable();
+            $table->string('last_name')->nullable();
+            $table->integer('age')->nullable();
+            $table->string('description')->nullable();
+            $table->enum('specialities', Specialities::values())->nullable();
+            $table->boolean('is_captain')->default(false);
         });
     }
 

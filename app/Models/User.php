@@ -29,9 +29,9 @@ class User extends Authenticatable
      *
      * @return BelongsToMany the ships he works for.
      */
-    public function worksFor(): BelongsToMany
+    public function ships(): BelongsToMany
     {
-        return $this->belongsToMany(Ship::class);
+        return $this->belongsToMany(Ship::class, 'crew');
     }
 
     /**

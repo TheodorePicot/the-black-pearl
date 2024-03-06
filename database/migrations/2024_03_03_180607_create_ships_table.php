@@ -1,6 +1,7 @@
 <?php
 
 use App\Enums\Condition;
+use App\Enums\WoodType;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -12,11 +13,11 @@ return new class extends Migration {
     public function up(): void
     {
         Schema::create('ships', function (Blueprint $table) {
-            $states = [Condition::Destroyed->value, Condition::BadlyDamaged->value, Condition::Damaged->value, Condition::Worn->value, Condition::Pristine->value];
+            $states = Condition::values();
             $table->id();
             $table->foreignIdFor(\App\Models\User::class)->constrained()->cascadeOnUpdate()->cascadeOnDelete();
             $table->string('name')->unique();
-            $table->enum('wood_type', ['oak', 'spruce', 'birch', 'mangrove']);
+            $table->enum('wood_type', WoodType::values());
             $table->enum('hull', $states)->default(Condition::Pristine->value);
             $table->enum('foremast', $states)->default(Condition::Pristine->value);
             $table->enum('mainmast', $states)->default(Condition::Pristine->value);

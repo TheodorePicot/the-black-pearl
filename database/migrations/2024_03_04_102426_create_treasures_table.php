@@ -16,7 +16,7 @@ return new class extends Migration {
             $states = [Condition::Destroyed->value, Condition::BadlyDamaged->value, Condition::Damaged->value, Condition::Worn->value, Condition::Pristine->value];
             $table->id();
             $table->string('name');
-            $table->string('description');
+            $table->string('description')->nullable();
             $table->integer('value');
             $table->integer('weight');
             $table->enum('condition', $states);

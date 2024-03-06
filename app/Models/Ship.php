@@ -6,6 +6,7 @@ use App\Enums\Condition;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Ship extends Model
@@ -25,11 +26,11 @@ class Ship extends Model
     /**
      * Get the crew of the ship.
      *
-     * @return HasMany the crew of the ship.
+     * @return belongsToMany the crew of the ship.
      */
-    public function crew(): HasMany
+    public function crew(): BelongsToMany
     {
-        return $this->hasMany(User::class);
+        return $this->belongsToMany(User::class, 'crew');
     }
 
     /**

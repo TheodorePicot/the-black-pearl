@@ -1,5 +1,6 @@
 <?php
 
+use App\Enums\ResourceType;
 use App\Models\Ship;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -16,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->integer('quantity');
-            $table->enum('type', ['fruit', 'vegetable', 'meat', 'fish', 'wood', 'bread', 'gun_powder', 'guns', 'grenades', 'swords', 'wine', 'rum']);
+            $table->enum('type', ResourceType::values());
             $table->foreignIdFor(Ship::class)->constrained()->cascadeOnDelete();
             $table->timestamps();
         });
