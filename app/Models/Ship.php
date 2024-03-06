@@ -14,6 +14,13 @@ class Ship extends Model
     use HasFactory;
 
     /**
+     * The relationships that should always be loaded.
+     *
+     * @var array
+     */
+    protected $with = ['resources'];
+
+    /**
      * Get the captain of the ship.
      *
      * @return BelongsTo the captain the ship belongs to.

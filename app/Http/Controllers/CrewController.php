@@ -5,17 +5,15 @@ namespace App\Http\Controllers;
 use App\Models\Ship;
 use Illuminate\Http\Request;
 
-class ShipResourceController extends Controller
+class CrewController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index(Ship $ship)
     {
-        $resources = $ship->resources()->with(['name', 'quantity', 'type']);
-        return view('resource.index', [
-            'resources' => $resources
-        ]);
+        $crew = $ship->crew();
+
     }
 
     /**
@@ -37,7 +35,7 @@ class ShipResourceController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Ship $ship)
+    public function show(string $id)
     {
         //
     }
@@ -45,7 +43,7 @@ class ShipResourceController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Ship $ship)
+    public function edit(string $id)
     {
         //
     }
@@ -53,7 +51,7 @@ class ShipResourceController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Ship $ship)
+    public function update(Request $request, string $id)
     {
         //
     }
@@ -61,7 +59,7 @@ class ShipResourceController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Ship $ship)
+    public function destroy(string $id)
     {
         //
     }

@@ -24,6 +24,11 @@ class User extends Authenticatable
         return $this->hasOne(Ship::class);
     }
 
+    public function ownsShip(): bool
+    {
+        return $this->ship() != null;
+    }
+
     /**
      * If the user is not a captain, gets the ships he works for.
      *

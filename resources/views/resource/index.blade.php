@@ -4,10 +4,12 @@
 
 @section('content')
     <div>
-        @foreach($resources as $resource)
+        @forelse($resources as $resource)
             <h4>Resource ID : {{ $resource->id }}</h4>
             <p><b>Resource name</b> : {{ $resource->name }}, <b>Resource quantity</b> : {{ $resource->quantity }}, <b>Resource
                     type</b> : {{ $resource->type }}</p>
-        @endforeach
+        @empty
+            No resources !
+        @endforelse
     </div>
 @endsection

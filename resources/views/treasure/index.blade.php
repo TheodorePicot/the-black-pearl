@@ -4,10 +4,12 @@
 
 @section('content')
     <div>
-        @foreach($treasures as $treasure)
+        @forelse($treasures as $treasure)
             <h4>Treasures ID : {{ $treasure->id }}</h4>
-            <p><b>Treasures name</b> : {{ $treasure->name }}, <b>Treasures quantity</b> : {{ $treasure->quantity }}, <b>Treasures
-                    type</b> : {{ $treasure->type }}</p>
-        @endforeach
+            <p><b>Treasures name</b> : {{ $treasure->name }}, <b>Treasures value</b> : {{ $treasure->value }}, <b>Treasures
+                    description</b> : {{ $treasure->description }}, <b>Weight</b> : {{ $treasure->weight }},  <b>Condition</b> : {{ $treasure->condition }}</p>
+        @empty
+            No treasure !
+        @endforelse
     </div>
 @endsection

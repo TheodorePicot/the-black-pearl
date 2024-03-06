@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\ResourceController;
+use App\Http\Controllers\TreasureController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,5 +24,13 @@ Route::view('dashboard', 'dashboard')
 Route::view('profile', 'profile')
     ->middleware(['auth'])
     ->name('profile');
+
+Route::resource('ships.resources', ResourceController::class)->only([
+    'index'
+]);
+
+Route::resource('ships.treasures', TreasureController::class)->only([
+    'index'
+]);
 
 require __DIR__.'/auth.php';

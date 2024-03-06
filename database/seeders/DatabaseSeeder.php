@@ -21,10 +21,21 @@ class DatabaseSeeder extends Seeder
             'name' => 'Theodore',
             'is_captain' => true
         ]);
+
+        User::factory()->create([
+            'password' => '$2y$12$jYXn/skTDCVgd3jlhjzQi.G3JyNz9ajkZ5uzBETyQWVDfmUbAzbXa',
+            'email' => 'theophrastian@yahoo.ru',
+            'name' => 'Theophraste',
+            'is_captain' => true
+        ]);
+
         Ship::factory()->hasTreasures(10)->hasResources(10)->hasCrew(10)->create([
             'user_id' => 1
         ]);
 
+        Ship::factory()->hasTreasures(10)->hasResources(10)->hasCrew(10)->create([
+            'user_id' => 2
+        ]);
 
         // \App\Models\User::factory()->create([
         //     'name' => 'Test User',
