@@ -32,7 +32,7 @@ class UserFactory extends Factory
             'last_name' => fake()->lastName(),
             'age' => fake()->numberBetween(18, 50),
             'description' => fake()->text(100),
-            'specialities' => Specialities::randomValue(),
+            'speciality' => Specialities::randomValue(),
             'email' => fake()->unique()->safeEmail(),
             'email_verified_at' => now(),
             'password' => static::$password ??= Hash::make('password'),

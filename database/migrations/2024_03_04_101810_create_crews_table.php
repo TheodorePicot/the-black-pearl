@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('crew', function (Blueprint $table) {
+        Schema::create('crew_members', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(Ship::class)->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->foreignIdFor(User::class)->constrained()->cascadeOnDelete()->cascadeOnUpdate();
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('crew');
+        Schema::dropIfExists('crew_members');
     }
 };

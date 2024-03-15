@@ -2,8 +2,10 @@
 
 namespace App\Http\Middleware;
 
+use App\Models\Ship;
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
@@ -20,8 +22,7 @@ class EnsureUserIsCaptainAndOwnsShip
      */
     public function handle(Request $request, Closure $next): Response
     {
-        $requestShipId = $request->route('ship');
-        if ($request->user()->is_captain && $request->user()->ownsShip() && $request->user()->ship->id === $requestShipId) {
+        if ($request->user()->is_captain && $request->user()->ownsShip()) {
             return $next($request);
         }
         abort(403, 'Only the captain of this ship has access to this part of the vessel !');

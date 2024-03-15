@@ -3,8 +3,10 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use GuzzleHttp\Psr7\Response;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -30,13 +32,29 @@ class User extends Authenticatable
     }
 
     /**
+     * Get all of the resources on the captains ship.
+     */
+    public function resources(): HasManyThrough
+    {
+        return $this->hasManyThrough(Resource::class, Ship::class);
+    }
+
+    /**
+     * Get all of the treasures on the captains ship.
+     */
+    public function treasures(): HasManyThrough
+    {
+        return $this->hasManyThrough(Treasure::class, Ship::class);
+    }
+
+    /**
      * If the user is not a captain, gets the ships he works for.
      *
      * @return BelongsToMany the ships he works for.
      */
     public function ships(): BelongsToMany
     {
-        return $this->belongsToMany(Ship::class, 'crew');
+        return $this->belongsToMany(Ship::class, 'crew_members');
     }
 
     /**
@@ -52,7 +70,7 @@ class User extends Authenticatable
         'last_name',
         'age',
         'description',
-        'specialities'
+        'speciality'
     ];
 
     /**

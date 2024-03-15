@@ -1,9 +1,9 @@
 <?php
 
-use App\Http\Controllers\ResourceController;
-use App\Http\Controllers\TreasureController;
+use App\Livewire\Pages\Crew\CrewIndex;
+use App\Livewire\Pages\Resources\ResourceIndex;
 use Illuminate\Support\Facades\Route;
-
+use App\Livewire\Pages\Treasures\TreasureIndex;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -25,12 +25,16 @@ Route::view('profile', 'profile')
     ->middleware(['auth'])
     ->name('profile');
 
-Route::resource('ships.resources', ResourceController::class)->only([
-    'index'
-]);
 
-Route::resource('ships.treasures', TreasureController::class)->only([
-    'index'
-]);
+Route::middleware(['auth', 'captain'])->group(function () {
+    Route::get('resources', ResourceIndex::class)
+        ->name('resources');
+
+    Route::get('treasures', TreasureIndex::class)
+        ->name('treasures');
+
+    Route::get('crew', CrewIndex::class)
+        ->name('crew');
+});
 
 require __DIR__.'/auth.php';

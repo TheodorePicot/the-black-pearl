@@ -35,9 +35,9 @@ class Ship extends Model
      *
      * @return belongsToMany the crew of the ship.
      */
-    public function crew(): BelongsToMany
+    public function crewMembers(): BelongsToMany
     {
-        return $this->belongsToMany(User::class, 'crew');
+        return $this->belongsToMany(User::class, 'crew_members');
     }
 
     /**

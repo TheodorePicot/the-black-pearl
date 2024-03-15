@@ -17,6 +17,7 @@ return new class extends Migration {
             $table->id();
             $table->foreignIdFor(\App\Models\User::class)->constrained()->cascadeOnUpdate()->cascadeOnDelete();
             $table->string('name')->unique();
+            $table->integer('treasury')->default(0);
             $table->enum('wood_type', WoodType::values());
             $table->enum('hull', $states)->default(Condition::Pristine->value);
             $table->enum('foremast', $states)->default(Condition::Pristine->value);

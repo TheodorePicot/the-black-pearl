@@ -29,11 +29,11 @@ class DatabaseSeeder extends Seeder
             'is_captain' => true
         ]);
 
-        Ship::factory()->hasTreasures(10)->hasResources(10)->hasCrew(10)->create([
+        Ship::factory()->hasTreasures(10)->hasResources(10)->hasCrewMembers(10)->create([
             'user_id' => 1
         ]);
 
-        Ship::factory()->hasTreasures(10)->hasResources(10)->hasCrew(10)->create([
+        Ship::factory()->hasTreasures(10)->hasResources(10)->hasCrewMembers(10)->create([
             'user_id' => 2
         ]);
 

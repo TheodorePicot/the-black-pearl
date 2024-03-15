@@ -21,7 +21,7 @@ class TreasureController extends Controller
      */
     public function index(Ship $ship)
     {
-        return view('treasure.index', [
+        return view('livewire.treasures.index', [
             'treasures' => $ship->treasures
         ]);
     }

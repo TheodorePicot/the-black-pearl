@@ -21,7 +21,7 @@ class ResourceController extends Controller
      */
     public function index(Ship $ship)
     {
-        return view('resource.index', [
+        return view('livewire.resources.management', [
             'resources' => $ship->resources
         ]);
     }

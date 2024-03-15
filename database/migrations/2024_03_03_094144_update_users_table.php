@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('last_name')->nullable();
             $table->integer('age')->nullable();
             $table->string('description')->nullable();
-            $table->enum('specialities', Specialities::values())->nullable();
+            $table->enum('speciality', Specialities::values())->nullable();
             $table->boolean('is_captain')->default(false);
         });
     }
@@ -28,7 +28,7 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn(['first_name', 'last_name', 'age', 'description', 'specialities', 'is_captain']);
+            $table->dropColumn(['first_name', 'last_name', 'age', 'description', 'speciality', 'is_captain']);
         });
     }
 };
